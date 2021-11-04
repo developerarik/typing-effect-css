@@ -1,0 +1,54 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+:root{
+	--bg-color: #060618;
+	--type-speed: 3.5s;
+	--blink-speed: 500ms;
+}
+body{
+	min-height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--bg-color);
+}
+h1{
+	font-family: Arial;
+	font-size: 4rem;
+	color: #fff;
+	position: relative;
+}
+h1::before, h1::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+h1::before{
+	background: var(--bg-color);
+	animation: type var(--type-speed) steps(21) 0.6s forwards infinite;
+}
+h1::after{
+	width: 0.225rem;
+	background: white;
+	animation: type var(--type-speed) steps(21) 0.6s forwards infinite,
+	blink var(--blink-speed) steps(21) infinite;
+}
+
+@keyframes type{
+	to{
+		left: 100%;
+	}
+}
+
+@keyframes blink {
+	to{
+		background: transparent;
+	}
+}
